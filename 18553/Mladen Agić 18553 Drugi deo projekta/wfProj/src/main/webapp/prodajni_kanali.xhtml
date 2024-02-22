@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>Prodajni kanali</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <h2>Uredjivanje prodajnih kanala</h2>
+
+            <h4>Dodavanje prodajnog kanala</h4>
+            <div>
+                <h:outputLabel value="Naziv:"/>
+                <h:inputText value="#{prodajni_kanalController.naziv}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Tip:"/>
+                <h:inputText value="#{prodajni_kanalController.tip}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Popust:"/>
+                <h:inputText value="#{prodajni_kanalController.popust}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Broj telefona:"/>
+                <h:inputText value="#{prodajni_kanalController.telefon}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Adresa lokala:"/>
+                <h:inputText value="#{prodajni_kanalController.adresa}"/>
+            </div>
+            <h:commandButton value="Dodaj kanal u bazu" action="#{prodajni_kanalController.SaveKanal()}"/>
+		</h:form>
+		<h:form>
+            <h4>Promeni naziv kanala sa odredjenim ID brojem</h4>
+            <div>
+                <h:outputLabel value="ID kanala"/>
+                <h:inputText value="#{prodajni_kanalController.id}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Novi naziv kanala"/>
+                <h:inputText value="#{prodajni_kanalController.naziv}"/>
+            </div>
+            <h:commandButton value="Azuriraj naziv kanala" action="#{prodajni_kanalController.UpdateNazivKan(prodajni_kanalController.id)}"/>
+		</h:form>
+		<h:form>
+            <h4>Promeni tip kanala sa odredjenim ID brojem</h4>
+            <div>
+                <h:outputLabel value="ID kanala"/>
+                <h:inputText value="#{prodajni_kanalController.id}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Novi tip kanala"/>
+                <h:inputText value="#{prodajni_kanalController.tip}"/>
+            </div>
+            <h:commandButton value="Azuriraj naziv kanala" action="#{prodajni_kanalController.UpdateTipKan(prodajni_kanalController.id)}"/>
+		</h:form>
+		<h:form>
+            <h4>Promeni popust kanala sa odredjenim ID brojem</h4>
+            <div>
+                <h:outputLabel value="ID kanala"/>
+                <h:inputText value="#{prodajni_kanalController.id}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Novi popust kanala"/>
+                <h:inputText value="#{prodajni_kanalController.popust}"/>
+            </div>
+            <h:commandButton value="Azuriraj naziv kanala" action="#{prodajni_kanalController.UpdatePopustKan(prodajni_kanalController.id)}"/>
+		</h:form>
+		<h:form>
+            <h4>Promeni telefon kanala sa odredjenim ID brojem</h4>
+            <div>
+                <h:outputLabel value="ID kanala"/>
+                <h:inputText value="#{prodajni_kanalController.id}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Novi kontakt telefon kanala"/>
+                <h:inputText value="#{prodajni_kanalController.telefon}"/>
+            </div>
+            <h:commandButton value="Azuriraj naziv kanala" action="#{prodajni_kanalController.UpdateTelefonKan(prodajni_kanalController.id)}"/>
+		</h:form>
+		<h:form>
+            <h4>Promeni adresu kanala sa odredjenim ID brojem</h4>
+            <div>
+                <h:outputLabel value="ID kanala"/>
+                <h:inputText value="#{prodajni_kanalController.id}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Nova adresa kanala"/>
+                <h:inputText value="#{prodajni_kanalController.adresa}"/>
+            </div>
+            <h:commandButton value="Azuriraj naziv kanala" action="#{prodajni_kanalController.UpdateAdresaKan(prodajni_kanalController.id)}"/>
+		</h:form>
+		<h:form>
+            <h4>Obrisi postojeci kanal iz baze na osnovu ID broja</h4>
+            <div>
+                <h:outputLabel value="ID kanala"/>
+                <h:inputText value="#{prodajni_kanalController.id}"/>
+            </div>
+            <h:commandButton value="Obrisi kanal" action="#{prodajni_kanalController.DeleteKanal(prodajni_kanalController.id)}"/>
+		</h:form>
+		<h:form>
+            <h4>Prikazi kanal na osnovu ID broja</h4>
+            <div>
+                <h:outputLabel value="ID kanala"/>
+                <h:inputText value="#{prodajni_kanalController.id}"/>
+            </div>
+            <h:commandButton value="Prikazi" action="#{prodajni_kanalController.GetKanal(prodajni_kanalController.id)}"/>
+		</h:form>
+		<h:form>
+            <h4>Prikaz svih prodajnih kanala</h4>
+            <h:dataTable value="#{prodajni_kanalController.listKanali}" var="k">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{k.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Naziv</f:facet>
+                    <h:outputText value="#{k.naziv}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Tip</f:facet>
+                    <h:outputText value="#{k.tip}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Popust</f:facet>
+                    <h:outputText value="#{k.popust}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Telefon</f:facet>
+                    <h:outputText value="#{k.telefon}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Adresa</f:facet>
+                    <h:outputText value="#{k.adresa}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>

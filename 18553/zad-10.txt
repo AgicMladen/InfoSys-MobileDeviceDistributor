@@ -1,0 +1,4 @@
+216. Informacioni sistem operatera mobilne telefonije za prodaju mobilnih uredaja preko razlicitih prodajnih kanala. Predstavnici departmana za prodaju biraju mobilne uredaje iz kataloga koje nude prodavnicama. Svaka od prodavnica pripada nekom od prodajnih kanala (predstavništvo, partner, samostalna radnja). Nakon sastavljanja liste, šalju ponudu menadžeru nabavke konkretne prodavnice. Ponuda može biti prihvacena ili odbijena. U slucaju da je prihvacena, sledeci korak je naplata. Prilikom placanja, potrebno je uneti podatke o poreznom broju prodavnice i broju bankovnog racuna. Uzeti u obzir razlicitu dostupnost uredaja i varijaciju u cenama za razlicite kanale.
+
+
+Obrazac: dekompozicija poslovnog cilja

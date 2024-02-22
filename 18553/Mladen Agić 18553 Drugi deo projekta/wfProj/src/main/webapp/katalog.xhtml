@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>Katalog</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <h2>Uredjivanje kataloga mobilnih uredajaja</h2>
+
+            <h4>Dodavanje novog uredjaja</h4>
+            <div>
+                <h:outputLabel value="Model:"/>
+                <h:inputText value="#{katalogController.model}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Cena:"/>
+                <h:inputText value="#{katalogController.cena}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Dostupnost:"/>
+                <h:inputText value="#{katalogController.dostup}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Brend:"/>
+                <h:inputText value="#{katalogController.brend}"/>
+            </div>
+            <h:commandButton value="Dodaj uredjaj u katalog" action="#{katalogController.saveKatalog()}"/>
+		</h:form>
+		<h:form>
+            <h4>Promeni model uredjaja:</h4>
+            <div>
+                <h:outputLabel value="ID uredjaja"/>
+                <h:inputText value="#{katalogController.id}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Promenjeni model mobilnog uredjaja"/>
+                <h:inputText value="#{katalogController.model}"/>
+            </div>
+            <h:commandButton value="Azuriraj model uredjaja" action="#{katalogController.updateModel()}"/>
+		</h:form>
+		<h:form>
+            <h4>Postavi uredjaj kao dostupan</h4>
+            <div>
+                <h:outputLabel value="ID uredjaja"/>
+                <h:inputText value="#{katalogController.id}"/>
+            </div>
+            <h:commandButton value="Azuriraj dostupnost" action="#{katalogController.setDostupan()}"/>
+		</h:form>
+		<h:form>
+            <h4>Postavi uredjaj kao nedostupan</h4>
+            <div>
+                <h:outputLabel value="ID uredjaja"/>
+                <h:inputText value="#{katalogController.id}"/>
+            </div>
+            <h:commandButton value="Azuriraj dostupnost" action="#{katalogController.setNedostupan()}"/>
+		</h:form>
+		<h:form>
+            <h4>Obrisi uredjaj iz kataloga:</h4>
+            <div>
+                <h:outputLabel value="ID uredjaja"/>
+                <h:inputText value="#{katalogController.id}"/>
+            </div>
+            <h:commandButton value="Obrisi uredjaj" action="#{katalogController.deleteKatalog()}"/>
+		</h:form>
+		<h:form>
+            <h4>Prikaz celog kataloga</h4>
+            <h:dataTable value="#{katalogController.listKatalog()}" var="u">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{u.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Model</f:facet>
+                    <h:outputText value="#{u.model}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Cena</f:facet>
+                    <h:outputText value="#{u.cena}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Dostupnost</f:facet>
+                    <h:outputText value="#{u.dostup}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Brend</f:facet>
+                    <h:outputText value="#{u.brend}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>

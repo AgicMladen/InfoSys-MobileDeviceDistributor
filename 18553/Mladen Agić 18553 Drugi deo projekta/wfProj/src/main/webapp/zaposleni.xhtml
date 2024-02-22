@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>Zaposleni</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <h2>Uredivanje zaposlenih u departmanu</h2>
+
+            <h4>Dodavanje novog zaposlenog</h4>
+            <div>
+                <h:outputLabel value="Ime:"/>
+                <h:inputText value="#{zaposleniController.ime}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Prezime:"/>
+                <h:inputText value="#{zaposleniController.prezime}"/>
+            </div>
+            <div>
+                <h:outputLabel value="JMBG:"/>
+                <h:inputText value="#{zaposleniController.jmbg}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Plata:"/>
+                <h:inputText value="#{zaposleniController.plata}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Bonus:"/>
+                <h:inputText value="#{zaposleniController.bonus}"/>
+            </div>
+            <h:commandButton value="Dodaj zaposlenog u bazu" action="#{zaposleniController.saveZaposlenog()}"/>
+		</h:form>
+		<h:form>
+            <h4>Promeni ime zaposlenog:</h4>
+            <div>
+                <h:outputLabel value="ID zaposlenog"/>
+                <h:inputText value="#{zaposleniController.id}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Novo ime zaposlenog"/>
+                <h:inputText value="#{zaposleniController.ime}"/>
+            </div>
+            <h:commandButton value="Azuriraj ime zaposlenog" action="#{zaposleniController.updateIme()}"/>
+		</h:form>
+		<h:form>
+            <h4>Promeni prezime zaposlenog</h4>
+                 <div>
+                <h:outputLabel value="ID zaposlenog"/>
+                <h:inputText value="#{zaposleniController.id}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Novo prezime zaposlenog"/>
+                <h:inputText value="#{zaposleniController.prezime}"/>
+            </div>
+            <h:commandButton value="Azuriraj prezime zaposlenog" action="#{zaposleniController.updatePrezime()}"/>
+		</h:form>
+		<h:form>
+            <h4>Promeni platu zaposlenog</h4>
+                 <div>
+                <h:outputLabel value="ID zaposlenog"/>
+                <h:inputText value="#{zaposleniController.id}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Nova plata zaposlenog"/>
+                <h:inputText value="#{zaposleniController.plata}"/>
+            </div>
+            <h:commandButton value="Azuriraj platu zaposlenog" action="#{zaposleniController.updatePlata()}"/>
+		</h:form>
+		<h:form>
+            <h4>Promeni bonus zaposlenog</h4>
+                 <div>
+                <h:outputLabel value="ID zaposlenog"/>
+                <h:inputText value="#{zaposleniController.id}"/>
+            </div>
+            <div>
+                <h:outputLabel value="Novi bonus zaposlenog"/>
+                <h:inputText value="#{zaposleniController.bonus}"/>
+            </div>
+            <h:commandButton value="Azuriraj bonus zaposlenog" action="#{zaposleniController.updateBonus()}"/>
+		</h:form>
+		<h:form>
+            <h4>Resetuj bonus zaposlenog na 0</h4>
+                 <div>
+                <h:outputLabel value="ID zaposlenog"/>
+                <h:inputText value="#{zaposleniController.id}"/>
+            </div>
+            <h:commandButton value="Resetuj bonus" action="#{zaposleniController.resetBonus()}"/>
+		</h:form>
+		<h:form>
+            <h4>Zapocni novi mesec (resetuj bonus svih zaposlenih na 0)</h4>
+            <h:commandButton value="Resetuj mesec" action="#{zaposleniController.resetMonth()}"/>
+		</h:form>
+		<h:form>
+            <h4>Obrisi zaposlenog iz baze</h4>
+                 <div>
+                <h:outputLabel value="ID zaposlenog"/>
+                <h:inputText value="#{zaposleniController.id}"/>
+            </div>
+            <h:commandButton value="Obrisi zaposlenog" action="#{zaposleniController.deleteZaposlenog()}"/>
+		</h:form>
+		<h:form>
+            <h4>Prikaz svih zaposlenih</h4>
+            <h:dataTable value="#{zaposleniController.listZaposleni()}" var="z">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{z.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ime</f:facet>
+                    <h:outputText value="#{z.ime}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Prezime</f:facet>
+                    <h:outputText value="#{z.prezime}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">JMBG</f:facet>
+                    <h:outputText value="#{z.jmbg}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Plata</f:facet>
+                    <h:outputText value="#{z.plata}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Bonus</f:facet>
+                    <h:outputText value="#{z.bonus}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
